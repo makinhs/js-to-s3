@@ -31,4 +31,4 @@ jobs:
       - name: Run build
         run: yarn build
       - name: Deploy
-        run: aws s3 sync ./dist s3://${{ secrets.S3_BUCKET_REGION }}/sdk
+        run: aws s3 sync ./dist s3://${{ secrets.S3_BUCKET_REGION }}
