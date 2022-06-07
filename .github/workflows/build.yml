@@ -31,4 +31,4 @@ jobs:
       - name: Run build
         run: yarn build
       - name: Deploy
-        run: aws s3 sync ./dist s3://static.yoytrustcenter.com/sdk/
+        run: aws s3 sync ./dist ${{ secrets.AWS_BUCKET_PATH }}
