@@ -34,9 +34,8 @@ jobs:
         id: tag
         uses: dawidd6/action-get-tag@v1
         with:
-          # Optionally strip `v` prefix
           strip_v: true
       - name: Add tag to bundle
-        run: cp ./dist/bundle.js ./dist/${{steps.tag.outputs.tag}}-bundle.js && rm ./dist/bundle.js
+        run: cp ./dist/bundle.js ./dist/bundle-v${{steps.tag.outputs.tag}}.js && rm ./dist/bundle.js
       - name: Deploy
         run: aws s3 sync ./dist ${{ secrets.AWS_BUCKET_PATH }}
