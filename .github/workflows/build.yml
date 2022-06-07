@@ -1,8 +1,8 @@
 name: Build
 on:
   push:
-    branches:
-      - main
+    tags:
+      - '*'
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -30,7 +30,13 @@ jobs:
         run: yarn install
       - name: Run build
         run: yarn build
+      - name: Get tag
+        id: tag
+        uses: dawidd6/action-get-tag@v1
+        with:
+          # Optionally strip `v` prefix
+          strip_v: true
       - name: Add tag to bundle
-        run: cp ./dist/bundle.js ./dist/1.0.0-bundle.js && rm ./dist/bundle.js
+        run: cp ./dist/bundle.js ./dist/${{steps.tag.outputs.tag}}-bundle.js && rm ./dist/bundle.js
       - name: Deploy
         run: aws s3 sync ./dist ${{ secrets.AWS_BUCKET_PATH }}
