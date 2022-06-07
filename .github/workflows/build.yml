@@ -30,5 +30,7 @@ jobs:
         run: yarn install
       - name: Run build
         run: yarn build
+      - name: Add tag to bundle
+        run: cp ./dist/bundle.js ./dist/1.0.0-bundle.js && rm ./dist/bundle.js
       - name: Deploy
         run: aws s3 sync ./dist ${{ secrets.AWS_BUCKET_PATH }}
