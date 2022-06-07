@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Custom SDK Sample</title>
+    <meta charset="UTF-8"/>
+    <meta
+            name="viewport"
+            content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <meta name="robots" content="noodp"/>
+    <style>
+        body {
+            width: 100%;
+            margin: auto;
+            padding-top: 10rem;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+<h1>Welcome to the test page</h1>
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<script>
+    (function () {
+
+        var s = document.createElement('script');
+        var r = false;
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = "./bundle.js";
+        s.onload = s.onreadystatechange = function () {
+            if (!r && (!this.readyState || this.readyState === 'complete')) {
+                r = true;
+                window.CustomSDK = new CustomSDK();
+                window.CustomSDK.sayHi();
+            }
+        };
+        var t = document.getElementsByTagName('script')[0];
+        t.parentNode.insertBefore(s, t);
+    })();
+</script>
+</body>
+</html>
