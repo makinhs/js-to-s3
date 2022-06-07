@@ -7,7 +7,7 @@
     "test": "jest --env=jsdom",
     "dev": "cp ./src/helpers/index.html ./dist/index.html && webpack serve --config webpack.dev.config.js",
     "start": "next start",
-    "build": "webpack --config webpack.build.config.js && cp ./dist/bundle.js ../../public/consent-script-test && cp ./dist/bundle.js ../../public/SDK.js",
+    "build": "webpack --config webpack.build.config.js",
     "build-dev": "webpack --config webpack.build.config.js && cp ./src/helpers/index.html ./dist/index.html"
   },
   "repository": {
